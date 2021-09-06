@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/pages/mountain_flight.dart';
 import 'package:khanepani/pages/one_way_flight.dart';
 import 'package:khanepani/widgets/flight_card_widget.dart';
 
@@ -42,7 +43,7 @@ class _AirlineState extends State<Airline> {
                   children: [
                     OneWayFlight(),
                     Icon(Icons.directions_transit),
-                    Icon(Icons.directions_bike),
+                    MountainFlight(),
                   ],
                 ),
               ),
