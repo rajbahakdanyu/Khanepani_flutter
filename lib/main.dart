@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/pages/airline_page.dart';
 import 'package:khanepani/pages/counter_page.dart';
+import 'package:khanepani/pages/khanepani_page.dart';
 
 import 'pages/home_page.dart';
 
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Home(),
+        '/khanepani': (context) => Khanepani(),
+        '/airline': (context) => Airline(),
         '/counterPage': (context) => Counter(),
       },
     );
