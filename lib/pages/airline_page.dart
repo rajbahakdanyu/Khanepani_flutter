@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:khanepani/pages/mountain_flight.dart';
 import 'package:khanepani/pages/one_way_flight.dart';
+import 'package:khanepani/pages/two_way_flight.dart';
 import 'package:khanepani/widgets/flight_card_widget.dart';
 
 class Airline extends StatefulWidget {
@@ -42,7 +43,7 @@ class _AirlineState extends State<Airline> {
                 child: TabBarView(
                   children: [
                     OneWayFlight(),
-                    Icon(Icons.directions_transit),
+                    TwoWayFlight(),
                     MountainFlight(),
                   ],
                 ),
