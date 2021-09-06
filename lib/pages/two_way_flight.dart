@@ -79,9 +79,9 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
       children: [
         SizedBox(height: 30),
         FlightInputWidget(),
-        SizedBox(height: 20),
+        SizedBox(height: 10),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -89,11 +89,12 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('Depature Date'),
                       SizedBox(height: 10),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.3,
+                        width: MediaQuery.of(context).size.width * 0.4,
                         child: WaterCounterWidget(
                           title: 'Tue, 7 Sept',
                           tapFunction: () => _selectDate(context),
@@ -102,13 +103,14 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
                     ],
                   ),
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Depature Date'),
+                      Text('Return Date'),
                       SizedBox(height: 10),
                       Container(
-                        width: MediaQuery.of(context).size.width * 0.3,
+                        width: MediaQuery.of(context).size.width * 0.4,
                         child: WaterCounterWidget(
-                          title: 'Tue, 7 Sept',
+                          title: 'Wed, 8 Sept',
                           tapFunction: () => _selectDate(context),
                         ),
                       ),
@@ -116,41 +118,29 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
                   ),
                 ],
               ),
-              SizedBox(height: 10),
-              Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                child: Column(
-                  children: [
-                    WaterCounterWidget(
-                      title: 'Tue, 7 Sept',
-                      tapFunction: () => _selectDate(context),
+              SizedBox(height: 20),
+              WaterCounterWidget(
+                title: '1 Traveller',
+                tapFunction: () => showModalBottomSheet(
+                  context: context,
+                  builder: (context) => buildSheet(),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(20),
                     ),
-                    SizedBox(height: 30),
-                    WaterCounterWidget(
-                      title: '1 Traveller',
-                      tapFunction: () => showModalBottomSheet(
-                        context: context,
-                        builder: (context) => buildSheet(),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.vertical(
-                            top: Radius.circular(20),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 40),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        fixedSize: Size(
-                          MediaQuery.of(context).size.width,
-                          MediaQuery.of(context).size.height * 0.07,
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: Text('Find Flights'),
-                    ),
-                  ],
+                  ),
                 ),
+              ),
+              SizedBox(height: 40),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  fixedSize: Size(
+                    MediaQuery.of(context).size.width,
+                    MediaQuery.of(context).size.height * 0.07,
+                  ),
+                ),
+                onPressed: () {},
+                child: Text('Find Flights'),
               ),
             ],
           ),

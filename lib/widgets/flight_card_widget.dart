@@ -12,7 +12,7 @@ class FlightCardWidget extends StatelessWidget {
           tabs: [
             Tab(
               icon: Icon(
-                Icons.compare_arrows,
+                Icons.arrow_right_alt,
                 color: Colors.green,
                 size: 35,
               ),
