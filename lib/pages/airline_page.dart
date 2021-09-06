@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/pages/one_way_flight.dart';
 import 'package:khanepani/widgets/flight_card_widget.dart';
 
 class Airline extends StatefulWidget {
@@ -30,10 +31,23 @@ class _AirlineState extends State<Airline> {
       ),
       body: DefaultTabController(
         length: 3,
-        child: Column(
-          children: [
-            FlightCardWidget(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              FlightCardWidget(),
+              Container(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height * 0.75,
+                child: TabBarView(
+                  children: [
+                    OneWayFlight(),
+                    Icon(Icons.directions_transit),
+                    Icon(Icons.directions_bike),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
