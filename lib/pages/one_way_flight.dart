@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/widgets/depature_input_widget.dart';
 import 'package:khanepani/widgets/flight_input_widget.dart';
 
 class OneWayFlight extends StatefulWidget {
@@ -15,6 +16,8 @@ class _OneWayFlightState extends State<OneWayFlight> {
       children: [
         SizedBox(height: 30),
         FlightInputWidget(),
+        SizedBox(height: 20),
+        DepatureInputWidget(),
       ],
     );
   }

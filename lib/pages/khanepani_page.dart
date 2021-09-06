@@ -33,7 +33,11 @@ class _KhanepaniState extends State<Khanepani> {
                   style: TextStyle(fontSize: 16),
                 ),
                 SizedBox(height: 5),
-                WaterCounterWidget(),
+                WaterCounterWidget(
+                  title: 'Select',
+                  tapFunction: () =>
+                      Navigator.of(context).pushNamed('/counterPage'),
+                ),
                 SizedBox(height: 30),
                 Text(
                   'Customer ID',

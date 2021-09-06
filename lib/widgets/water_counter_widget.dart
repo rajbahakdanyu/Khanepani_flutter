@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class WaterCounterWidget extends StatefulWidget {
-  const WaterCounterWidget({Key? key}) : super(key: key);
+  WaterCounterWidget({
+    Key? key,
+    this.tapFunction,
+    this.title = 'Select',
+  }) : super(key: key);
+
+  final VoidCallback? tapFunction;
+  String title;
 
   @override
   _WaterCounterWidgetState createState() => _WaterCounterWidgetState();
@@ -11,7 +18,7 @@ class _WaterCounterWidgetState extends State<WaterCounterWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(context).pushNamed('/counterPage'),
+      onTap: widget.tapFunction,
       child: Container(
         width: double.infinity,
         height: MediaQuery.of(context).size.height * 0.07,
@@ -22,7 +29,7 @@ class _WaterCounterWidgetState extends State<WaterCounterWidget> {
               Expanded(
                 flex: 5,
                 child: Text(
-                  'Select',
+                  widget.title,
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.grey.shade400,
