@@ -10,6 +10,22 @@ class DepatureWidget extends StatefulWidget {
 }
 
 class _DepatureWidgetState extends State<DepatureWidget> {
+  DateTime selectedDate = DateTime.now();
+
+  _selectDate(BuildContext context) async {
+    final DateTime? selected = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2010),
+      lastDate: DateTime(2025),
+    );
+
+    if (selected != null && selected != selectedDate)
+      setState(() {
+        selectedDate = selected;
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +34,7 @@ class _DepatureWidgetState extends State<DepatureWidget> {
         children: [
           WaterCounterWidget(
             title: 'Tue, 7 Sept',
-            tapFunction: () {},
+            tapFunction: () => _selectDate(context),
           ),
           SizedBox(height: 30),
           WaterCounterWidget(
