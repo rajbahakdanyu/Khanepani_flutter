@@ -90,6 +90,7 @@ class _CounterState extends State<Counter> {
       itemBuilder: (context, index) {
         return ListTile(
           title: Text(counterList[index]),
+          onTap: () {},
         );
       },
     );
@@ -98,7 +99,23 @@ class _CounterState extends State<Counter> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: TextField(
+          cursorColor: Colors.white,
+          style: TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            hintText: 'Search',
+            border: InputBorder.none,
+          ),
+          onChanged: (v) {},
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.close_outlined),
+          )
+        ],
+      ),
       body: counterBuilder(),
     );
   }
