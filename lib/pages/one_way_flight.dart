@@ -13,6 +13,7 @@ class _OneWayFlightState extends State<OneWayFlight> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        SizedBox(height: 30),
         FlightInputWidget(),
       ],
     );

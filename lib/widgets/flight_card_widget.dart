@@ -7,6 +7,7 @@ class FlightCardWidget extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: Card(
         child: TabBar(
+          labelPadding: EdgeInsets.all(5),
           labelColor: Colors.black,
           tabs: [
             Tab(
@@ -31,7 +32,7 @@ class FlightCardWidget extends StatelessWidget {
                 color: Colors.green,
                 size: 35,
               ),
-              text: 'Mountain Way',
+              text: 'Mountain Flight',
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/widgets/input_fields_widget.dart';
 
 class FlightInputWidget extends StatefulWidget {
   const FlightInputWidget({Key? key}) : super(key: key);
@@ -12,18 +13,15 @@ class _FlightInputWidgetState extends State<FlightInputWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.9,
-      child: Column(
+      child: Stack(
+        alignment: AlignmentDirectional.centerEnd,
         children: [
-          TextField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.arrow_upward),
-              hintText: 'Eg. Kathmandu',
-            ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-              prefixIcon: Icon(Icons.arrow_downward),
-              hintText: 'Eg. pokhara',
+          InputFieldWidget(),
+          FloatingActionButton(
+            onPressed: () {},
+            child: Icon(
+              Icons.height,
+              size: 30,
             ),
           ),
         ],
