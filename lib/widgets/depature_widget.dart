@@ -44,10 +44,12 @@ class _DepatureWidgetState extends State<DepatureWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Adults +12 yrs'),
-                CounterInputWidget(),
+                CounterInputWidget(
+                  minimum: 1,
+                  initial: 1,
+                ),
               ],
             ),
-            SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -55,7 +57,7 @@ class _DepatureWidgetState extends State<DepatureWidget> {
                 CounterInputWidget(),
               ],
             ),
-            SizedBox(height: 30),
+            SizedBox(height: 10),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 fixedSize: Size(
