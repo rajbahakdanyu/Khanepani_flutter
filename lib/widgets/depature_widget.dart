@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/widgets/counter_input_widget.dart';
 
 import 'package:khanepani/widgets/water_counter_widget.dart';
 
@@ -26,6 +27,50 @@ class _DepatureWidgetState extends State<DepatureWidget> {
       });
   }
 
+  Widget buildSheet() => Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Passenger Information',
+              style: TextStyle(
+                fontSize: 22,
+              ),
+            ),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Adults +12 yrs'),
+                CounterInputWidget(),
+              ],
+            ),
+            SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Childrens under 12 yrs'),
+                CounterInputWidget(),
+              ],
+            ),
+            SizedBox(height: 30),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                fixedSize: Size(
+                  MediaQuery.of(context).size.width,
+                  MediaQuery.of(context).size.height * 0.07,
+                ),
+              ),
+              onPressed: () {},
+              child: Text('Apply'),
+            ),
+            SizedBox(height: 20),
+          ],
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -39,7 +84,15 @@ class _DepatureWidgetState extends State<DepatureWidget> {
           SizedBox(height: 30),
           WaterCounterWidget(
             title: '1 Traveller',
-            tapFunction: () {},
+            tapFunction: () => showModalBottomSheet(
+              context: context,
+              builder: (context) => buildSheet(),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20),
+                ),
+              ),
+            ),
           ),
           SizedBox(height: 40),
           ElevatedButton(
