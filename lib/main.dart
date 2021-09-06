@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:khanepani/pages/airline_page.dart';
-import 'package:khanepani/pages/counter_page.dart';
-import 'package:khanepani/pages/khanepani_page.dart';
 
+import 'pages/airline_page.dart';
+import 'pages/counter_page.dart';
+import 'pages/khanepani_page.dart';
 import 'pages/home_page.dart';
-import 'themes/colors.dart';
 
 void main() {
   runApp(MyApp());

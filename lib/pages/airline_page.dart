@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/widgets/flight_card_widget.dart';
 
 class Airline extends StatefulWidget {
   const Airline({Key? key}) : super(key: key);
@@ -26,6 +27,14 @@ class _AirlineState extends State<Airline> {
             ),
           ),
         ],
+      ),
+      body: DefaultTabController(
+        length: 3,
+        child: Column(
+          children: [
+            FlightCardWidget(),
+          ],
+        ),
       ),
     );
   }
