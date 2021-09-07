@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:khanepani/widgets/counter_input_widget.dart';
 import 'package:khanepani/widgets/flight_input_widget.dart';
@@ -12,19 +13,35 @@ class TwoWayFlight extends StatefulWidget {
 }
 
 class _TwoWayFlightState extends State<TwoWayFlight> {
-  DateTime selectedDate = DateTime.now();
+  int totalPeople = 1;
+  DateTime depatureDate = DateTime.now();
+  DateTime returnDate = DateTime.now();
 
-  _selectDate(BuildContext context) async {
+  _selectDepature(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
       context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2010),
-      lastDate: DateTime(2025),
+      initialDate: depatureDate,
+      firstDate: DateTime.now(),
+      lastDate: DateTime(DateTime.now().year + 1),
     );
 
-    if (selected != null && selected != selectedDate)
+    if (selected != null && selected != depatureDate)
       setState(() {
-        selectedDate = selected;
+        depatureDate = selected;
+      });
+  }
+
+  _selectReturn(BuildContext context) async {
+    final DateTime? selected = await showDatePicker(
+      context: context,
+      initialDate: depatureDate,
+      firstDate: depatureDate,
+      lastDate: DateTime(DateTime.now().year + 1),
+    );
+
+    if (selected != null && selected != returnDate)
+      setState(() {
+        returnDate = selected;
       });
   }
 
@@ -96,8 +113,8 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
                       Container(
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: WaterCounterWidget(
-                          title: 'Tue, 7 Sept',
-                          tapFunction: () => _selectDate(context),
+                          title: DateFormat.MMMEd().format(depatureDate),
+                          tapFunction: () => _selectDepature(context),
                         ),
                       ),
                     ],
@@ -110,8 +127,8 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
                       Container(
                         width: MediaQuery.of(context).size.width * 0.4,
                         child: WaterCounterWidget(
-                          title: 'Wed, 8 Sept',
-                          tapFunction: () => _selectDate(context),
+                          title: DateFormat.MMMEd().format(returnDate),
+                          tapFunction: () => _selectReturn(context),
                         ),
                       ),
                     ],
@@ -120,7 +137,7 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
               ),
               SizedBox(height: 20),
               WaterCounterWidget(
-                title: '1 Traveller',
+                title: '$totalPeople Traveller',
                 tapFunction: () => showModalBottomSheet(
                   context: context,
                   builder: (context) => buildSheet(),

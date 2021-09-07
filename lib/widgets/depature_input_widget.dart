@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:khanepani/widgets/counter_input_widget.dart';
 import 'package:khanepani/widgets/water_counter_widget.dart';
@@ -12,14 +13,13 @@ class DepatureInputWidget extends StatefulWidget {
 
 class _DepatureInputWidgetState extends State<DepatureInputWidget> {
   DateTime selectedDate = DateTime.now();
-  String _destinationDate = DateTime.now().toString();
 
   _selectDate(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
       context: context,
       initialDate: selectedDate,
       firstDate: DateTime.now(),
-      lastDate: DateTime(DateTime.now().year + 5),
+      lastDate: DateTime(DateTime.now().year + 1),
     );
 
     if (selected != null && selected != selectedDate)
@@ -88,7 +88,7 @@ class _DepatureInputWidgetState extends State<DepatureInputWidget> {
             child: Column(
               children: [
                 WaterCounterWidget(
-                  title: _destinationDate,
+                  title: DateFormat.MMMEd().format(selectedDate),
                   tapFunction: () => _selectDate(context),
                 ),
                 SizedBox(height: 30),
