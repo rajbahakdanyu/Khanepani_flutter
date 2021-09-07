@@ -12,13 +12,14 @@ class DepatureInputWidget extends StatefulWidget {
 
 class _DepatureInputWidgetState extends State<DepatureInputWidget> {
   DateTime selectedDate = DateTime.now();
+  String _destinationDate = DateTime.now().toString();
 
   _selectDate(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
       context: context,
       initialDate: selectedDate,
-      firstDate: DateTime(2010),
-      lastDate: DateTime(2025),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(DateTime.now().year + 5),
     );
 
     if (selected != null && selected != selectedDate)
@@ -87,7 +88,7 @@ class _DepatureInputWidgetState extends State<DepatureInputWidget> {
             child: Column(
               children: [
                 WaterCounterWidget(
-                  title: 'Tue, 7 Sept',
+                  title: _destinationDate,
                   tapFunction: () => _selectDate(context),
                 ),
                 SizedBox(height: 30),
