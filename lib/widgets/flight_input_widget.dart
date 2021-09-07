@@ -8,38 +8,60 @@ class FlightInputWidget extends StatefulWidget {
 }
 
 class _FlightInputWidgetState extends State<FlightInputWidget> {
-  TextEditingController _currentLocation = new TextEditingController();
-  TextEditingController _destinationLocation = new TextEditingController();
+  String _currentLocation = 'Eg. Kathmandu';
+  String _destinationLocation = 'Eg. Pokhara';
+
+  Widget airportFields(
+      VoidCallback tapFunc, IconData fieldIcon, String location) {
+    return GestureDetector(
+      onTap: tapFunc,
+      child: Container(
+        height: 60,
+        decoration: BoxDecoration(
+          color: Colors.grey.shade200,
+          borderRadius: BorderRadius.circular(5),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Expanded(
+                child: Icon(
+                  fieldIcon,
+                  color: Colors.green,
+                  size: 30,
+                ),
+              ),
+              Expanded(
+                flex: 8,
+                child: Text(
+                  location,
+                  style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 
   Widget flightInputFields() {
     return Column(
       children: [
-        TextField(
-          controller: _currentLocation,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(borderSide: BorderSide.none),
-            focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
-            focusColor: Colors.grey.shade200,
-            fillColor: Colors.grey.shade200,
-            filled: true,
-            prefixIcon: Icon(Icons.arrow_upward),
-            hintText: 'Eg. Kathmnadu',
-          ),
-          cursorHeight: 25,
+        airportFields(
+          () => Navigator.pushNamed(context, '/airport'),
+          Icons.arrow_upward,
+          _currentLocation,
         ),
         SizedBox(height: 20),
-        TextField(
-          controller: _destinationLocation,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(borderSide: BorderSide.none),
-            focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
-            focusColor: Colors.grey.shade200,
-            fillColor: Colors.grey.shade200,
-            filled: true,
-            prefixIcon: Icon(Icons.arrow_downward),
-            hintText: 'Eg. Pokhara',
-          ),
-          cursorHeight: 25,
+        airportFields(
+          () => Navigator.pushNamed(context, '/airport'),
+          Icons.arrow_downward,
+          _destinationLocation,
         ),
       ],
     );
@@ -55,7 +77,7 @@ class _FlightInputWidgetState extends State<FlightInputWidget> {
           flightInputFields(),
           FloatingActionButton(
             onPressed: () {
-              TextEditingController temp = _currentLocation;
+              String temp = _currentLocation;
 
               setState(() {
                 _currentLocation = _destinationLocation;

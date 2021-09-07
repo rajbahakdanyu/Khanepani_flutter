@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/pages/airports_page.dart';
 
 import 'pages/airline_page.dart';
 import 'pages/counter_page.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         '/khanepani': (context) => Khanepani(),
         '/airline': (context) => Airline(),
         '/counter': (context) => Counter(),
-        '/airport': (context) => Counter(),
+        '/airport': (context) => Airport(),
       },
     );
   }
