@@ -11,96 +11,46 @@ class _AirportState extends State<Airport> {
   TextEditingController _searchController = new TextEditingController();
   List<String> _foundList = [];
 
-  List<String> _counterList = [
-    'Achham',
-    'Arghakhanchi',
-    'Baglung',
-    'Baitadi',
-    'Bajhang',
-    'Bajura',
-    'Banke',
-    'Bara',
-    'Bardiya',
-    'Bhaktapur',
-    'Bhojpur',
-    'Chitwan',
-    'Dadeldhura',
-    'Dailekh',
-    'Dang',
-    'Darchula',
-    'Dhading',
-    'Dhankuta',
-    'Dhanusa',
-    'Dolakha',
-    'Dolpa',
-    'Doti',
-    'Gorkha',
-    'Humla',
-    'Ilam',
-    'Jajarkot',
-    'Jhapa',
-    'Jumla',
-    'Kailali',
-    'Kalikot',
-    'Kanchanpur',
-    'Kapilvastu',
-    'Kaski',
-    'Kathmandu',
-    'Kavrepalanchok',
-    'Khotang',
-    'Lalitpur',
-    'Lamjung',
-    'Mahottari',
-    'Makwanpur',
-    'Manang',
-    'Morang',
-    'Mugu',
-    'Mustang',
-    'Myagdi',
-    'Nawalparasi',
-    'Nuwakot',
-    'Okhaldhunga',
-    'Palpa',
-    'Panchthar',
-    'Parbat',
-    'Parsa',
-    'Pyuthan',
-    'Ramechhap',
-    'Rasuwa',
-    'Rautahat',
-    'Rolpa',
-    'Rukum',
-    'Rupandehi',
-    'Salyan',
-    'Sankhuwasabha',
-    'Saptari',
-    'Sarlahi',
-    'Sindhuli',
-    'Sindhupalchok',
-    'Siraha',
-    'Solukhumbu',
-    'Sunsari',
-    'Surkhet',
-    'Syangja',
-    'Tanahu',
-    'Terhathum',
-    'Udayapur',
+  List<String> _airportList = [
+    'Jumla (JUM)',
+    'Dhangadhi (DHI)',
+    'Dolpa (DOP)',
+    'Kathmandu (KTM)',
+    'Mountain (MTN)',
+    'Simikot (IMK)',
+    'Biratnagar (BIR)',
+    'Bajura (BJR)',
+    'Rajbiraj (RJB)',
+    'Bhairahwa (BWA)',
+    'Bharatpur (BHR)',
+    'Jomsom (JMO)',
+    'Phaplu (PPL)',
+    'Bhadrapur (BDP)',
+    'Janakpur (JKR)',
+    'Simara (SIF)',
+    'Surkhet (SKH)',
+    'Tumlingtar (TMI)',
+    'Pokhara (PKR)',
+    'Ramechhap (RCH)',
+    'Nepalgunj (KEP)',
+    'Lukla (LUA)',
+    'Talcha (TAL)',
   ];
 
   @override
   initState() {
     super.initState();
 
-    _foundList = _counterList;
+    _foundList = _airportList;
   }
 
   void _runFilter(String enteredKeyword) {
     List<String> results = [];
 
     if (enteredKeyword.isEmpty) {
-      results = _counterList;
+      results = _airportList;
     } else {
-      results = _counterList
+      results = _airportList
           .where((place) =>
               place.toLowerCase().contains(enteredKeyword.toLowerCase()))
           .toList();
@@ -111,7 +61,7 @@ class _AirportState extends State<Airport> {
     });
   }
 
-  Widget counterBuilder() {
+  Widget airportBuilder() {
     return ListView.builder(
       itemCount: _foundList.length,
       itemBuilder: (context, index) {
@@ -148,7 +98,7 @@ class _AirportState extends State<Airport> {
         ],
       ),
       body: _foundList.length > 0
-          ? counterBuilder()
+          ? airportBuilder()
           : Center(
               child: Text(
                 'No results found',
