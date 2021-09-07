@@ -6,7 +6,9 @@ import 'package:khanepani/widgets/top_card_widget.dart';
 import 'package:khanepani/widgets/water_counter_widget.dart';
 
 class Khanepani extends StatefulWidget {
-  const Khanepani({Key? key}) : super(key: key);
+  Khanepani({Key? key, this.counter = 'Select'}) : super(key: key);
+
+  String counter;
 
   @override
   _KhanepaniState createState() => _KhanepaniState();
@@ -14,7 +16,6 @@ class Khanepani extends StatefulWidget {
 
 class _KhanepaniState extends State<Khanepani> {
   TextEditingController _customerId = new TextEditingController();
-  bool _isCustomer = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class _KhanepaniState extends State<Khanepani> {
                 ),
                 SizedBox(height: 5),
                 WaterCounterWidget(
-                  title: 'Select',
+                  title: widget.counter,
                   tapFunction: () =>
                       Navigator.of(context).pushNamed('/counter'),
                 ),
