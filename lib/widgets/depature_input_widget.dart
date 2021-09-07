@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:khanepani/providers/passenger_provider.dart';
 
 import 'package:khanepani/widgets/counter_input_widget.dart';
 import 'package:khanepani/widgets/water_counter_widget.dart';
+import 'package:provider/provider.dart';
 
 class DepatureInputWidget extends StatefulWidget {
   const DepatureInputWidget({Key? key}) : super(key: key);
@@ -28,6 +30,12 @@ class _DepatureInputWidgetState extends State<DepatureInputWidget> {
       });
   }
 
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<PassengerProvider>(context, listen: false).initPassengers();
+  }
+
   Widget buildSheet() => Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -48,6 +56,7 @@ class _DepatureInputWidgetState extends State<DepatureInputWidget> {
                 CounterInputWidget(
                   minimum: 1,
                   initial: 1,
+                  pType: 'Adult',
                 ),
               ],
             ),
@@ -55,7 +64,9 @@ class _DepatureInputWidgetState extends State<DepatureInputWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Childrens under 12 yrs'),
-                CounterInputWidget(),
+                CounterInputWidget(
+                  pType: 'Child',
+                ),
               ],
             ),
             SizedBox(height: 10),
@@ -92,18 +103,21 @@ class _DepatureInputWidgetState extends State<DepatureInputWidget> {
                   tapFunction: () => _selectDate(context),
                 ),
                 SizedBox(height: 30),
-                WaterCounterWidget(
-                  title: '1 Traveller',
-                  tapFunction: () => showModalBottomSheet(
-                    context: context,
-                    builder: (context) => buildSheet(),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(20),
+                Consumer<PassengerProvider>(
+                    builder: (context, passenger, child) {
+                  return WaterCounterWidget(
+                    title: '${passenger.totalPassengers} Traveller',
+                    tapFunction: () => showModalBottomSheet(
+                      context: context,
+                      builder: (context) => buildSheet(),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
                       ),
                     ),
-                  ),
-                ),
+                  );
+                }),
                 SizedBox(height: 40),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(

@@ -5,10 +5,12 @@ class CounterInputWidget extends StatefulWidget {
     Key? key,
     this.initial = 0,
     this.minimum = 0,
+    this.pType = 'Adult',
   }) : super(key: key);
 
   int initial;
   int minimum;
+  String pType;
 
   @override
   _CounterInputWidgetState createState() => _CounterInputWidgetState();
@@ -16,11 +18,13 @@ class CounterInputWidget extends StatefulWidget {
 
 class _CounterInputWidgetState extends State<CounterInputWidget> {
   late int value;
+  late String pType;
 
   @override
   void initState() {
     super.initState();
     value = widget.initial;
+    pType = widget.pType;
   }
 
   @override
