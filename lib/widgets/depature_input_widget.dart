@@ -55,7 +55,6 @@ class _DepatureInputWidgetState extends State<DepatureInputWidget> {
                 Text('Adults +12 yrs'),
                 CounterInputWidget(
                   minimum: 1,
-                  initial: 1,
                   pType: 'Adult',
                 ),
               ],

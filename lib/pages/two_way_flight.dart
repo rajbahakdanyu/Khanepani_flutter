@@ -32,12 +32,6 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
       });
   }
 
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<PassengerProvider>(context, listen: false).initPassengers();
-  }
-
   _selectReturn(BuildContext context) async {
     final DateTime? selected = await showDatePicker(
       context: context,
@@ -71,7 +65,6 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
                 Text('Adults +12 yrs'),
                 CounterInputWidget(
                   minimum: 1,
-                  initial: 1,
                 ),
               ],
             ),

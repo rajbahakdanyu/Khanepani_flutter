@@ -1,29 +1,46 @@
 import 'package:flutter/material.dart';
 
 class PassengerProvider extends ChangeNotifier {
-  Map<String, int> passenger = {};
+  int adult = 0;
+  int child = 0;
 
   int get totalPassengers {
-    int total = 0;
-
-    passenger.forEach((key, value) {
-      total += value;
-    });
+    int total = adult + child;
 
     return total;
   }
 
-  void updatePassengers(Map<String, int> updatedList) {
-    passenger = updatedList;
+  int get getAdult => adult;
+
+  int get getChild => child;
+
+  void increaseAdult() {
+    adult++;
+
+    notifyListeners();
+  }
+
+  void increaseChild() {
+    child++;
+
+    notifyListeners();
+  }
+
+  void decreaseAdult() {
+    adult--;
+
+    notifyListeners();
+  }
+
+  void decreaseChild() {
+    child--;
 
     notifyListeners();
   }
 
   void initPassengers() {
-    passenger = {
-      'adult': 1,
-      'child': 0,
-    };
+    child = 0;
+    adult = 1;
 
     notifyListeners();
   }
