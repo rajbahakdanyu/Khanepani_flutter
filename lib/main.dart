@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/providers/passenger_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'pages/airline_page.dart';
@@ -11,9 +12,9 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        // ChangeNotifierProvider.value(
-        //   value: CountryProvider(),
-        // ),
+        ChangeNotifierProvider.value(
+          value: PassengerProvider(),
+        ),
       ],
       child: MyApp(),
     ),
