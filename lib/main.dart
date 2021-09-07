@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'pages/airline_page.dart';
 import 'pages/airports_page.dart';
@@ -7,7 +8,16 @@ import 'pages/khanepani_page.dart';
 import 'pages/home_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        // ChangeNotifierProvider.value(
+        //   value: CountryProvider(),
+        // ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
