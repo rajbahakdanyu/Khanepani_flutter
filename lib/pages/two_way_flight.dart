@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:khanepani/providers/passenger_provider.dart';
 
 import 'package:khanepani/widgets/counter_input_widget.dart';
 import 'package:khanepani/widgets/flight_input_widget.dart';
 import 'package:khanepani/widgets/water_counter_widget.dart';
+import 'package:provider/provider.dart';
 
 class TwoWayFlight extends StatefulWidget {
   const TwoWayFlight({Key? key}) : super(key: key);
@@ -13,7 +15,6 @@ class TwoWayFlight extends StatefulWidget {
 }
 
 class _TwoWayFlightState extends State<TwoWayFlight> {
-  int totalPeople = 1;
   DateTime depatureDate = DateTime.now();
   DateTime returnDate = DateTime.now();
 
@@ -29,6 +30,12 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
       setState(() {
         depatureDate = selected;
       });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<PassengerProvider>(context, listen: false).initPassengers();
   }
 
   _selectReturn(BuildContext context) async {
@@ -90,6 +97,7 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
           ],
         ),
       );
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -136,17 +144,21 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
                 ],
               ),
               SizedBox(height: 20),
-              WaterCounterWidget(
-                title: '$totalPeople Traveller',
-                tapFunction: () => showModalBottomSheet(
-                  context: context,
-                  builder: (context) => buildSheet(),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(20),
+              Consumer<PassengerProvider>(
+                builder: (context, passenger, child) {
+                  return WaterCounterWidget(
+                    title: '${passenger.totalPassengers}Traveller',
+                    tapFunction: () => showModalBottomSheet(
+                      context: context,
+                      builder: (context) => buildSheet(),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(20),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
               SizedBox(height: 40),
               ElevatedButton(
