@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khanepani/middlewares/validator_mixin.dart';
 
 import 'package:khanepani/widgets/bottom_sheet_widget.dart';
 import 'package:khanepani/widgets/top_card_widget.dart';
@@ -12,6 +13,8 @@ class Khanepani extends StatefulWidget {
 }
 
 class _KhanepaniState extends State<Khanepani> {
+  TextEditingController _customerId = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +48,7 @@ class _KhanepaniState extends State<Khanepani> {
                 ),
                 SizedBox(height: 5),
                 TextField(
+                  controller: _customerId,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(borderSide: BorderSide.none),
                     focusedBorder:
@@ -54,6 +58,9 @@ class _KhanepaniState extends State<Khanepani> {
                     filled: true,
                   ),
                   cursorHeight: 25,
+                  onEditingComplete: () {
+                    print(ValidationMixin().validateUserName(_customerId.text));
+                  },
                 ),
                 SizedBox(height: 40),
                 ElevatedButton(

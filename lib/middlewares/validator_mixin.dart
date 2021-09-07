@@ -36,6 +36,17 @@ class ValidationMixin {
     return null;
   }
 
+  validateUserName(String value) {
+    String pattern = r'(^[a-zA-Z0-9]*$)';
+    RegExp regExp = new RegExp(pattern);
+    if (value.length == 0) {
+      return 'Name is Required';
+    } else if (!regExp.hasMatch(value.trim())) {
+      return 'Name must be a-z, A-Z and 0-9';
+    }
+    return null;
+  }
+
   validateAmount(String value) {
     if (value.trim().isEmpty) {
       return "Enter an amount";
