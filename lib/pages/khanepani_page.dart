@@ -59,7 +59,14 @@ class _KhanepaniState extends State<Khanepani> {
                   ),
                   cursorHeight: 25,
                   onEditingComplete: () {
-                    print(ValidationMixin().validateUserName(_customerId.text));
+                    var result =
+                        ValidationMixin().validateUserName(_customerId.text);
+
+                    if (result.runtimeType == String) {
+                      print(result);
+                    } else {
+                      print('Valid Customer Id');
+                    }
                   },
                 ),
                 SizedBox(height: 40),
