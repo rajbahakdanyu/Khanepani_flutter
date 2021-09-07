@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class TopCardWidget extends StatelessWidget {
+class TopCardWidget extends StatefulWidget {
   const TopCardWidget({Key? key}) : super(key: key);
+
+  @override
+  _TopCardWidgetState createState() => _TopCardWidgetState();
+}
+
+class _TopCardWidgetState extends State<TopCardWidget> {
+  String amount = '123.45';
+  String obscure = 'XXXXXX';
+  bool _isObscure = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +35,18 @@ class TopCardWidget extends StatelessWidget {
                     children: [
                       Text('NPR'),
                       SizedBox(width: 5),
-                      Text(
-                        '123.45',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                        child: Text(
+                          _isObscure ? obscure : amount,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ],

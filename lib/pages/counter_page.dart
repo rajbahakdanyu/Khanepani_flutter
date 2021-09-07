@@ -8,7 +8,9 @@ class Counter extends StatefulWidget {
 }
 
 class _CounterState extends State<Counter> {
-  List<String> counterList = [
+  List<String> _foundList = [];
+
+  List<String> _counterList = [
     'Achham',
     'Arghakhanchi',
     'Baglung',
@@ -84,12 +86,36 @@ class _CounterState extends State<Counter> {
     'Udayapur',
   ];
 
+  @override
+  initState() {
+    super.initState();
+
+    _foundList = _counterList;
+  }
+
+  void _runFilter(String enteredKeyword) {
+    List<String> results = [];
+
+    if (enteredKeyword.isEmpty) {
+      results = _counterList;
+    } else {
+      results = _counterList
+          .where((place) =>
+              place.toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+    }
+
+    setState(() {
+      _foundList = results;
+    });
+  }
+
   Widget counterBuilder() {
     return ListView.builder(
-      itemCount: counterList.length,
+      itemCount: _foundList.length,
       itemBuilder: (context, index) {
         return ListTile(
-          title: Text(counterList[index]),
+          title: Text(_foundList[index]),
           onTap: () {},
         );
       },
@@ -107,7 +133,7 @@ class _CounterState extends State<Counter> {
             hintText: 'Search',
             border: InputBorder.none,
           ),
-          onChanged: (v) {},
+          onChanged: (v) => _runFilter(v),
         ),
         actions: [
           IconButton(
@@ -116,7 +142,14 @@ class _CounterState extends State<Counter> {
           )
         ],
       ),
-      body: counterBuilder(),
+      body: _foundList.length > 0
+          ? counterBuilder()
+          : Center(
+              child: Text(
+                'No results found',
+                style: TextStyle(fontSize: 24),
+              ),
+            ),
     );
   }
 }
