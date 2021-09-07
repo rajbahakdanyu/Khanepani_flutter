@@ -8,10 +8,14 @@ class FlightInputWidget extends StatefulWidget {
 }
 
 class _FlightInputWidgetState extends State<FlightInputWidget> {
+  TextEditingController _currentLocation = new TextEditingController();
+  TextEditingController _destinationLocation = new TextEditingController();
+
   Widget flightInputFields() {
-    return  Column(
+    return Column(
       children: [
         TextField(
+          controller: _currentLocation,
           decoration: InputDecoration(
             border: OutlineInputBorder(borderSide: BorderSide.none),
             focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
@@ -25,6 +29,7 @@ class _FlightInputWidgetState extends State<FlightInputWidget> {
         ),
         SizedBox(height: 20),
         TextField(
+          controller: _destinationLocation,
           decoration: InputDecoration(
             border: OutlineInputBorder(borderSide: BorderSide.none),
             focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
@@ -49,7 +54,14 @@ class _FlightInputWidgetState extends State<FlightInputWidget> {
         children: [
           flightInputFields(),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              TextEditingController temp = _currentLocation;
+
+              setState(() {
+                _currentLocation = _destinationLocation;
+                _destinationLocation = temp;
+              });
+            },
             child: Icon(
               Icons.height,
               size: 30,

@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => Home(),
         '/khanepani': (context) => Khanepani(),
         '/airline': (context) => Airline(),
-        '/counterPage': (context) => Counter(),
+        '/counter': (context) => Counter(),
+        '/airport': (context) => Counter(),
       },
     );
   }

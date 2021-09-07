@@ -39,7 +39,7 @@ class _KhanepaniState extends State<Khanepani> {
                 WaterCounterWidget(
                   title: 'Select',
                   tapFunction: () =>
-                      Navigator.of(context).pushNamed('/counterPage'),
+                      Navigator.of(context).pushNamed('/counter'),
                 ),
                 SizedBox(height: 30),
                 Text(
