@@ -119,15 +119,10 @@ class _CounterState extends State<Counter> {
         return ListTile(
           title: Text(_foundList[index]),
           onTap: () {
-            print(_foundList[index]);
-            // Navigator.pop(
-            //   context,
-            //   MaterialPageRoute(
-            //     builder: (_) => Khanepani(
-            //       counter: _foundList[index],
-            //     ),
-            //   ),
-            // );
+            Navigator.pop(
+              context,
+              _foundList[index],
+            );
           },
         );
       },

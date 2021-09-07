@@ -40,8 +40,13 @@ class _KhanepaniState extends State<Khanepani> {
                 SizedBox(height: 5),
                 WaterCounterWidget(
                   title: widget.counter,
-                  tapFunction: () =>
-                      Navigator.of(context).pushNamed('/counter'),
+                  tapFunction: () async {
+                    var temp =
+                        await Navigator.of(context).pushNamed('/counter');
+                    setState(() {
+                      widget.counter = temp.toString();
+                    });
+                  },
                 ),
                 SizedBox(height: 30),
                 Text(
