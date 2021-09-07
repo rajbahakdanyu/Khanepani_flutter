@@ -56,7 +56,7 @@ class _FlightInputWidgetState extends State<FlightInputWidget> {
           () async {
             var temp = await Navigator.pushNamed(context, '/airport');
             setState(() {
-              _currentLocation = temp.toString();
+              if (temp != null) _currentLocation = temp.toString();
             });
           },
           Icons.arrow_upward,
@@ -67,7 +67,7 @@ class _FlightInputWidgetState extends State<FlightInputWidget> {
           () async {
             var temp = await Navigator.pushNamed(context, '/airport');
             setState(() {
-              _destinationLocation = temp.toString();
+              if (temp != null) _destinationLocation = temp.toString();
             });
           },
           Icons.arrow_downward,

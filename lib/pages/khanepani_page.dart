@@ -44,7 +44,7 @@ class _KhanepaniState extends State<Khanepani> {
                     var temp =
                         await Navigator.of(context).pushNamed('/counter');
                     setState(() {
-                      widget.counter = temp.toString();
+                      if (temp != null) widget.counter = temp.toString();
                     });
                   },
                 ),
