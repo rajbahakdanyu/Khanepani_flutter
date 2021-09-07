@@ -8,6 +8,7 @@ class Counter extends StatefulWidget {
 }
 
 class _CounterState extends State<Counter> {
+  TextEditingController _searchController = new TextEditingController();
   List<String> _foundList = [];
 
   List<String> _counterList = [
@@ -127,6 +128,7 @@ class _CounterState extends State<Counter> {
     return Scaffold(
       appBar: AppBar(
         title: TextField(
+          controller: _searchController,
           cursorColor: Colors.white,
           style: TextStyle(color: Colors.white),
           decoration: InputDecoration(
@@ -137,7 +139,10 @@ class _CounterState extends State<Counter> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              _searchController.clear();
+              _runFilter('');
+            },
             icon: Icon(Icons.close_outlined),
           )
         ],
