@@ -14,6 +14,7 @@ class Khanepani extends StatefulWidget {
 
 class _KhanepaniState extends State<Khanepani> {
   TextEditingController _customerId = new TextEditingController();
+  bool _isCustomer = false;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,8 @@ class _KhanepaniState extends State<Khanepani> {
                   style: TextStyle(fontSize: 16),
                 ),
                 SizedBox(height: 5),
-                TextField(
+                TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: _customerId,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(borderSide: BorderSide.none),
@@ -58,16 +60,8 @@ class _KhanepaniState extends State<Khanepani> {
                     filled: true,
                   ),
                   cursorHeight: 25,
-                  onEditingComplete: () {
-                    var result =
-                        ValidationMixin().validateUserName(_customerId.text);
-
-                    if (result.runtimeType == String) {
-                      print(result);
-                    } else {
-                      print('Valid Customer Id');
-                    }
-                  },
+                  validator: (v) =>
+                      ValidationMixin().validateUserName(_customerId.text),
                 ),
                 SizedBox(height: 40),
                 ElevatedButton(
