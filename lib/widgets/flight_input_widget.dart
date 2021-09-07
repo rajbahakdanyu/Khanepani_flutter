@@ -53,13 +53,23 @@ class _FlightInputWidgetState extends State<FlightInputWidget> {
     return Column(
       children: [
         airportFields(
-          () => Navigator.pushNamed(context, '/airport'),
+          () async {
+            var temp = await Navigator.pushNamed(context, '/airport');
+            setState(() {
+              _currentLocation = temp.toString();
+            });
+          },
           Icons.arrow_upward,
           _currentLocation,
         ),
         SizedBox(height: 20),
         airportFields(
-          () => Navigator.pushNamed(context, '/airport'),
+          () async {
+            var temp = await Navigator.pushNamed(context, '/airport');
+            setState(() {
+              _destinationLocation = temp.toString();
+            });
+          },
           Icons.arrow_downward,
           _destinationLocation,
         ),

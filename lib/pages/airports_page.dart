@@ -67,7 +67,7 @@ class _AirportState extends State<Airport> {
       itemBuilder: (context, index) {
         return ListTile(
           title: Text(_foundList[index]),
-          onTap: () {},
+          onTap: () => Navigator.pop(context, _foundList[index]),
         );
       },
     );
