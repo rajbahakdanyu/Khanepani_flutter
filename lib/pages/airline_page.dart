@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:khanepani/pages/mountain_flight.dart';
 import 'package:khanepani/pages/one_way_flight.dart';
 import 'package:khanepani/pages/two_way_flight.dart';
-import 'package:khanepani/providers/passenger_provider.dart';
 import 'package:khanepani/widgets/flight_card_widget.dart';
-import 'package:provider/provider.dart';
 
 class Airline extends StatefulWidget {
   const Airline({Key? key}) : super(key: key);
@@ -15,12 +13,6 @@ class Airline extends StatefulWidget {
 }
 
 class _AirlineState extends State<Airline> {
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<PassengerProvider>(context, listen: false).initPassengers();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

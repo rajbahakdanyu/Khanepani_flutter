@@ -46,6 +46,12 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
       });
   }
 
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<PassengerProvider>(context, listen: false).initPassengers();
+  }
+
   Widget buildSheet() => Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
@@ -72,7 +78,9 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Childrens under 12 yrs'),
-                CounterInputWidget(),
+                CounterInputWidget(
+                  pType: 'Child',
+                ),
               ],
             ),
             SizedBox(height: 10),
