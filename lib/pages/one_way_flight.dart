@@ -21,6 +21,8 @@ class _OneWayFlightState extends State<OneWayFlight> {
 
   @override
   Widget build(BuildContext context) {
+    // Provider.of<PassengerProvider>(context, listen: false).initPassengers();
+
     return Column(
       children: [
         SizedBox(height: 30),

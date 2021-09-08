@@ -148,7 +148,7 @@ class _TwoWayFlightState extends State<TwoWayFlight> {
               Consumer<PassengerProvider>(
                 builder: (context, passenger, child) {
                   return WaterCounterWidget(
-                    title: '${passenger.totalPassengers}Traveller',
+                    title: '${passenger.totalPassengers} Traveller',
                     tapFunction: () => showModalBottomSheet(
                       context: context,
                       builder: (context) => buildSheet(),
