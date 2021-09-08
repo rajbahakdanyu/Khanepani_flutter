@@ -4,14 +4,6 @@ class PassengerProvider extends ChangeNotifier {
   int adult = 0;
   int child = 0;
 
-  // PassengerProvider() {
-  //   increaseAdult();
-  //   increaseChild();
-  //   decreaseAdult();
-  //   decreaseChild();
-  //   initPassengers();
-  // }
-
   void initPassengers() {
     child = 0;
     adult = 1;

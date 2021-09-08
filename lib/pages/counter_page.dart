@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:khanepani/pages/khanepani_page.dart';
 
 class Counter extends StatefulWidget {
   const Counter({Key? key}) : super(key: key);
